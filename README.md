@@ -1,1 +1,1 @@
-# Jogo-GhostsAndDiamonds
+# Ghosts and Diamonds
