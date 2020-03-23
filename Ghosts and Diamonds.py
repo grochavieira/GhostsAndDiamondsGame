@@ -10,28 +10,27 @@ win = pygame.display.set_mode((600,600))
 pygame.display.set_caption("Ghosts and Diamonds")
 
 #vetores de sprites
-walkRight = [pygame.image.load('R1.png'), pygame.image.load('R2.png'), pygame.image.load('R3.png'), pygame.image.load('R4.png')]
-walkLeft = [pygame.image.load('L1.png'), pygame.image.load('L2.png'), pygame.image.load('L3.png'), pygame.image.load('L4.png')]
-walkBottom = [pygame.image.load('F1.png'), pygame.image.load('F2.png'), pygame.image.load('F3.png'), pygame.image.load('F4.png')]
-walkTop = [pygame.image.load('B1.png'), pygame.image.load('B2.png'), pygame.image.load('B3.png'), pygame.image.load('B4.png')]
+walkRight = [pygame.image.load('img/R1.png'), pygame.image.load('img/R2.png'), pygame.image.load('img/R3.png'), pygame.image.load('img/R4.png')]
+walkLeft = [pygame.image.load('img/L1.png'), pygame.image.load('img/L2.png'), pygame.image.load('img/L3.png'), pygame.image.load('img/L4.png')]
+walkBottom = [pygame.image.load('img/F1.png'), pygame.image.load('img/F2.png'), pygame.image.load('img/F3.png'), pygame.image.load('img/F4.png')]
+walkTop = [pygame.image.load('img/B1.png'), pygame.image.load('img/B2.png'), pygame.image.load('img/B3.png'), pygame.image.load('img/B4.png')]
 
 #variaveis com as imagens guardadas
-end = pygame.image.load('end.png')
-begin = pygame.image.load('begin.png')
-winner = pygame.image.load('win.png')
-level1 = pygame.image.load('level1.png')
-level2 = pygame.image.load('level2.png')
-level3 = pygame.image.load('level3.png')
-level4 = pygame.image.load('level4.png')
-level5 = pygame.image.load('level5.png')
-diamante = pygame.image.load('diamante.png')
+end = pygame.image.load('img/end.png')
+begin = pygame.image.load('img/begin.png')
+winner = pygame.image.load('img/win.png')
+level1 = pygame.image.load('img/level1.png')
+level2 = pygame.image.load('img/level2.png')
+level3 = pygame.image.load('img/level3.png')
+level4 = pygame.image.load('img/level4.png')
+level5 = pygame.image.load('img/level5.png')
+diamante = pygame.image.load('img/diamante.png')
 
 #variavel para definir qual imagem será desenhada
 stage = 0
-stage2 = 1
 
 #iniciar a musica do jogo
-music = pygame.mixer.music.load('music.wav')
+music = pygame.mixer.music.load('music/music.wav')
 #a musica sempre repetirá com "-1"
 pygame.mixer.music.play(-1)
 
@@ -61,7 +60,7 @@ class player(object):
         self.y = y
         self.width = width
         self.height = height
-        self.vel = 5
+        self.vel = 10
         self.left = False
         self.right = False
         self.bottom = True
@@ -113,7 +112,7 @@ class player(object):
             #desenha a imagem "perdeu!!!"
             win.blit(end, (0,0))
             #começa a roda uma musica diferente
-            music = pygame.mixer.music.load('lose.wav')
+            music = pygame.mixer.music.load('music/lose.wav')
             #essa música toca apenas uma vez
             pygame.mixer.music.play(1)
             #atualiza a tela
@@ -135,7 +134,7 @@ class player(object):
             #desenha a tela "ganhou!!!"
             win.blit(winner, (0,0))
             #toca uma música diferente da principal
-            music = pygame.mixer.music.load('winned.wav')
+            music = pygame.mixer.music.load('music/winned.wav')
             #essa música toca apenas uma vez
             pygame.mixer.music.play(1)
             pygame.display.update()
@@ -160,10 +159,10 @@ class player(object):
         
 class enemy(object):
     #vetor de sprites do inimigo
-    walkRight = [pygame.image.load('ER1.png'), pygame.image.load('ER2.png'), pygame.image.load('ER3.png'), pygame.image.load('ER4.png')]
-    walkLeft = [pygame.image.load('EL1.png'), pygame.image.load('EL2.png'), pygame.image.load('EL3.png'), pygame.image.load('EL4.png')]
-    walkBottom = [pygame.image.load('EF1.png'), pygame.image.load('EF2.png'), pygame.image.load('EF3.png'), pygame.image.load('EF4.png')]
-    walkTop = [pygame.image.load('EB1.png'), pygame.image.load('EB2.png'), pygame.image.load('EB3.png'), pygame.image.load('EB4.png')]
+    walkRight = [pygame.image.load('img/ER1.png'), pygame.image.load('img/ER2.png'), pygame.image.load('img/ER3.png'), pygame.image.load('img/ER4.png')]
+    walkLeft = [pygame.image.load('img/EL1.png'), pygame.image.load('img/EL2.png'), pygame.image.load('img/EL3.png'), pygame.image.load('img/EL4.png')]
+    walkBottom = [pygame.image.load('img/EF1.png'), pygame.image.load('img/EF2.png'), pygame.image.load('img/EF3.png'), pygame.image.load('img/EF4.png')]
+    walkTop = [pygame.image.load('img/EB1.png'), pygame.image.load('img/EB2.png'), pygame.image.load('img/EB3.png'), pygame.image.load('img/EB4.png')]
 
     """função para pegar a posição, tamanho e altura, velocidade, limite x1, x2, y1 e y2(de onde até aonde o inimigo caminhará)
     e os ultimos quatro são qual direção ele caminhará primeiro(se top for igual a true, ele vai caminhar pra cima primeiro, por exemplo)"""
@@ -697,12 +696,12 @@ while run:
     elif stage == 1:
         if keys[pygame.K_SPACE]:
             stage = 2
-            music = pygame.mixer.music.load('music.wav')
+            music = pygame.mixer.music.load('music/music.wav')
             pygame.mixer.music.play(-1)
     elif stage == 7:
         if keys[pygame.K_SPACE]:
             stage = 0
-            music = pygame.mixer.music.load('music.wav')
+            music = pygame.mixer.music.load('music/music.wav')
             pygame.mixer.music.play(-1)
     #inicia a função principal do jogo, que desenha tudo o que é necessário          
     redrawGameWindow()
